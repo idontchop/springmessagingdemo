@@ -15,16 +15,21 @@ public class SpringDemoWithKeys {
 	@Autowired
 	private KafkaTemplate<String, NotificationDto> kafkaTemplate;
 	
-	String topic = "TutorialTopic";
+	String topic = "Notification";
 	String value = "Hello from Spring Demo With Keys";
-	String key = "DemoWithKeys";
+	String key = "Notification";
 	String bootstrap = "staging:9092";
 	
 	public void run () {
 		
 		NotificationDto nt = new NotificationDto("TestUser").setFrom("Me").setType_id(10);
+		nt.setReferenceId("111");
 		Assert.state(kafkaTemplate!=null, "kafkaTemplate is null! wtf");
-		kafkaTemplate.send(topic, nt);
+		kafkaTemplate.send(topic, key, nt)
+			.addCallback( 
+					e -> logger.info("send success: " + e.getRecordMetadata().topic()),
+					e -> logger.info("error"));
+		logger.info("Sent message to Notifications topic.");
 	}
 
 }

@@ -29,10 +29,10 @@ public class KafkaController {
 	}*/
 
 	@KafkaListener(topics = "TutorialTopic",
-			groupId = "NotificationService",
+			groupId = "NotificationServiceDemo",
 			properties = {ConsumerConfig.AUTO_OFFSET_RESET_CONFIG + ":latest"},
 			containerFactory = "notificationKafkaListenerContainerFactory")
 	public void consumeNotification(NotificationDto notification) throws IOException {
-		logger.info("Consumed: " + "Notification" + "- \"" + notification.getFrom() + "\": " + notification.type_id);
+		logger.info("Consumed: " + "Notification" + "- \"" + notification.getFromId() + "\": " + notification.type_id);
 	}
 }

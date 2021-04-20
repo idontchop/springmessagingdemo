@@ -1,10 +1,8 @@
 spring:
-  deserializer.value.delegate.class: org.apache.kafka.common.serialization.JsonDeserializer
-  deserializer.key.delegate.class: org.apache.kafka.common.serialization.StringDeserializer
   kafka:
     consumer:
       bootstrap-servers: staging:9092
-      group-id: NotificationService
+      group-id: NotificationServiceDemo
       auto-offset-reset: earliest
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer

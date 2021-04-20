@@ -4,26 +4,29 @@ public class NotificationDto {
 	
 	public NotificationDto() {}
 	public NotificationDto(String from) {
-		this.from = from;
-		this.to = "TestUser2";
+		this.fromId = from;
+		this.toId = "TestUser2";
 		this.type_id = 1;
 	}
 	
-	String from;
-	String to;
+	String fromId;
+	String toId;
 	int type_id;
-	public String getFrom() {
-		return from;
+	private String referenceId;
+	
+	
+	public String getFromId() {
+		return fromId;
 	}
 	public NotificationDto setFrom(String from) {
-		this.from = from;
+		this.fromId = from;
 		return this;
 	}
-	public String getTo() {
-		return to;
+	public String getToId() {
+		return toId;
 	}
-	public NotificationDto setTo(String to) {
-		this.to = to;
+	public NotificationDto setTo(String toId) {
+		this.toId = toId;
 		return this;
 	}
 	public int getType_id() {
@@ -32,6 +35,12 @@ public class NotificationDto {
 	public NotificationDto setType_id(int type_id) {
 		this.type_id = type_id;
 		return this;
+	}
+	public String getReferenceId() {
+		return referenceId;
+	}
+	public void setReferenceId(String referenceId) {
+		this.referenceId = referenceId;
 	}
 	
 
