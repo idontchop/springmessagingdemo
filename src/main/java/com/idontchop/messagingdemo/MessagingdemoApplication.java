@@ -48,6 +48,8 @@ public class MessagingdemoApplication implements CommandLineRunner {
 		
 		producer.close();
 		
+		//DemoWithKeys dwk = new DemoWithKeys();
+		//dwk.run();
 		
 		//Consumer c = new Consumer();
 		//c.run();

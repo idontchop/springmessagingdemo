@@ -27,12 +27,22 @@ public class KafkaController {
 		logger.info("Consumed: " + key + "- \"" + message + "\"");
 		
 	}*/
-
-	@KafkaListener(topics = "TutorialTopic",
-			groupId = "NotificationServiceDemo",
+/*
+	@KafkaListener(topics = "Notifications",
+			groupId = "NotificationServiceDemo2",
 			properties = {ConsumerConfig.AUTO_OFFSET_RESET_CONFIG + ":latest"},
 			containerFactory = "notificationKafkaListenerContainerFactory")
-	public void consumeNotification(NotificationDto notification) throws IOException {
-		logger.info("Consumed: " + "Notification" + "- \"" + notification.getFromId() + "\": " + notification.type_id);
+	public void consumeNotification(NotificationDto notification,
+			@Header("event-type") String eventType) throws IOException {
+		logger.info("New Consumed " + eventType + ": " + "Notification" + "- \"" + notification.getFromId() + "\": " + notification.type_id);
+	}*/
+	
+	@KafkaListener(topics = "Notifications",
+			groupId = "NotificationServiceDemo2",
+			properties = {ConsumerConfig.AUTO_OFFSET_RESET_CONFIG + ":latest"},
+			containerFactory = "notification2KafkaListenerContainerFactory")
+	public void consumemNotification(NotificationDto notification,
+			@Header("event-type") String eventType) throws IOException {
+		logger.info("Delete Consumed " + eventType + ": " + "Notification" + "- \"" + notification.getFromId() + "\": " + notification.type_id);
 	}
 }
